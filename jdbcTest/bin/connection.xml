@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "conOracle" name="conOracle" class = "connection.Connessione" >
+   <constructor-arg name="url" type="String" value="jdbc:oracle:thin:@localhost:1521:xe"></constructor-arg>
+   <constructor-arg name="user" type="String" value="system"></constructor-arg>
+   <constructor-arg name="passwd" type="String" value="qwert123"></constructor-arg>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "update" name="update" class = "java.util.String" lazy-init = "true">
+   <property name="query" value="UPDATE users SET username = ?, password = ? WHERE ID = ?"/>
+   </bean>
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "insert" name="insert" class = "java.util.String" lazy-init = "true">
+   <property name="query" value="INSERT INTO users (id, username, password, id_anagrafica) VALUES (?, ?, ?,?)"/>
+   </bean>
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "delete" name="delete" class = "java.util.String" lazy-init = "true">
+   <property name="query" value="DELETE FROM users WHERE ID = ?"/>
+   </bean>
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "select" name="select" class = "java.util.String" lazy-init = "true">
+   <property name="query" value="SELECT * FROM users WHERE username = ?"/>
+   </bean>
+  
+</beans>
