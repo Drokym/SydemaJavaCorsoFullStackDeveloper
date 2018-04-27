@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "persona" name="persona" class = "persone.PersonaBase" lazy-init = "true">
+   <constructor-arg name="nome" type="String" value="Super"></constructor-arg>
+   <constructor-arg name="cognome" type="String" value="Man"></constructor-arg>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "studente" name="studente" class = "persone.Studente" lazy-init = "true">
+   <property name="persona" ref="persona"/>
+    <property name="matricola" value="MS34XDS9940"/>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "operaio" name="operaio" class = "persone.Operaio" lazy-init = "true">
+   <property name="persona" ref="persona"/>
+   <property name="salario" value="133.0"/>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "pensionato" name="pensionato" class = "persone.Pensionato" lazy-init = "true">
+   <property name="persona" ref="persona"/>
+   <property name="pensione" value="133.0"/>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "docente" name="docente" class = "persone.Docente" lazy-init = "true">
+   <property name="persona" ref="persona"/>
+   <property name="pensione" value="133.0"/>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "operaioStudente" name="operaioStudente" class = "persone.Operaio" lazy-init = "true">
+   <property name="persona" ref="studente"/>
+   <property name="salario" value="133.0"/>
+   </bean>
+   
+   <!-- A bean definition with lazy init set on -->
+   <bean id = "osp" name="osp" class = "persone.Pensionato" lazy-init = "true">
+   <property name="persona" ref="operaioStudente"/>
+   <property name="pensione" value="133.0"/>
+   </bean>
+  
+</beans>
